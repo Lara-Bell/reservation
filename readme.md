@@ -27,7 +27,7 @@ cp .env.example .env
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [Lara-Bell](https://github.com/Lara-Bell)
+- [Lara-Bell](https://github.com/Lara-Bell)
 
 See also the list of [contributors](https://github.com/Lara-Bell/reservation/contributors) who participated in this project.
 

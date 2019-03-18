@@ -17,9 +17,6 @@
 
 Route::get('/', 'ScheduleController@index');
 
-Route::get('/users', 'UserController@index')->name('users.index');
-Route::get('/appointments', 'AppointmentController@index')->name('appointments.index');
 Route::post('/appointments', 'AppointmentController@store')->name('appointments.store');
-Route::post('/appointments/{appointment}', 'AppointmentController@update')->name('appointments.update');
+Route::put('/appointments/{appointment}', 'AppointmentController@update')->name('appointments.update');
 Route::delete('/appointments/{appointment}', 'AppointmentController@destroy')->name('appointments.destroy');
-Route::get('/holidays', 'HolidayController@index')->name('holidays.index');

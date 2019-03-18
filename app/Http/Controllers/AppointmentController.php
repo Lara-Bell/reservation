@@ -15,8 +15,6 @@ class AppointmentController extends Controller
      */
     public function index(Request $request)
     {
-        // return response()->json([], 200);
-
         $start = "";
         $end = "";
         if($request->get('start') && $request->get('end')){
@@ -63,7 +61,6 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-
         $appointment = new Appointment();
         $appointment->title = $request["appointment-title"];
         $appointment->description = $request["appointment-description"];
@@ -111,7 +108,6 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, Appointment $appointment)
     {
-
         $appo = Appointment::findOrFail($appointment->id);
         $appo->title = $request["appointment-title"];
         $appo->description = $request["appointment-description"];

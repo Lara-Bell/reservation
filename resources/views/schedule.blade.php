@@ -3,7 +3,7 @@
 @section('title', 'スケジュール管理画面')
 
 @section('link')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.css" />
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.css" /> --}}
 @endsection
 
 @section('content')
@@ -85,94 +85,5 @@
   </div>
 </div>
 @endsection
-
-
 @push('scripts')
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar-scheduler/1.9.4/scheduler.min.js"></script> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/gcal.min.js"></script> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/ja.js"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js"></script>
-<script>
-$("#calendarModal").on("show.bs.modal", function () {
-  var defaultColor = $("#color").attr('value');
-
-  const pickr = new Pickr({
-    el: '.color-picker',
-
-    default: defaultColor,
-
-    swatches: [
-      'rgba(244, 67, 54, 1)',
-      'rgba(233, 30, 99, 0.95)',
-      'rgba(156, 39, 176, 0.9)',
-      'rgba(103, 58, 183, 0.85)',
-      'rgba(63, 81, 181, 0.8)',
-      'rgba(33, 150, 243, 0.75)',
-      'rgba(3, 169, 244, 0.7)',
-      'rgba(0, 188, 212, 0.7)',
-      'rgba(0, 150, 136, 0.75)',
-      'rgba(76, 175, 80, 0.8)',
-      'rgba(139, 195, 74, 0.85)',
-      'rgba(205, 220, 57, 0.9)',
-      'rgba(255, 235, 59, 0.95)',
-      'rgba(255, 193, 7, 1)'
-    ],
-
-    components: {
-      // Main components
-      preview: true,
-      opacity: true,
-      hue: true,
-
-      // Input / output Options
-      interaction: {
-        hex: true,
-        rgba: true,
-        input: true,
-        clear: true,
-        save: true
-      }
-    },
-    strings: {
-      clear: '取消', // Default for clear button
-      save: '保存', // Default for save button
-    }
-  });
-
-  // type="button"追加
-  $('.pickr > button, .pcr-color-preview > button, .swatches > button').attr('type', 'button');
-
-  pickr.on('save', function(hsva) {
-    let eventColor = hsva.toHEX().toString();
-    $("#color").attr('value', eventColor);
-    $("#text-color").attr('value', blackOrWhite(eventColor));
-  });
-});
-
-
-// textColor white OR Black
-function blackOrWhite(hexcolor) {
-  var r = parseInt(hexcolor.substr(1, 2), 16);
-  var g = parseInt(hexcolor.substr(3, 2), 16);
-  var b = parseInt(hexcolor.substr(5, 2), 16);
-  return ((((r * 299) + (g * 587) + (b * 114)) / 1000) < 128) ? "#fff" : "#343a40";
-}
-
-$("#calendarModal").on("hidden.bs.modal", function () {
-  // put your default event here
-  gEventRenders = [];
-
-  $("div .pickr").before('<div id="color-code" class="color-picker"></div>');
-  $("div .pickr").remove();
-  $("#color").attr('value', '');
-  $("#text-color").attr('value', '');
-
-  $("#calendar").fullCalendar('refetchEvents');
-});
-
-
-
-</script>
 @endpush

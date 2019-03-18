@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/users', 'UserController@index')->name('users.index');
+Route::get('/appointments', 'AppointmentController@index')->name('appointments.index');
+Route::get('/holidays', 'HolidayController@index')->name('holidays.index');
