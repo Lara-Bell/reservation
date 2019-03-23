@@ -23,6 +23,7 @@ cd reservation
 composer install
 npm run dev # Or npm run watch
 cp .env.example .env
+php artisan migrate --seed
 ```
 
 ## Authors

@@ -83,9 +83,13 @@ $(document).ready(function () {
     $('.pickr > button, .pcr-color-preview > button, .swatches > button').attr('type', 'button');
 
     pickr.on('save', function(hsva) {
-      let eventColor = hsva.toHEX().toString();
-      $("#color").attr('value', eventColor);
-      $("#text-color").attr('value', blackOrWhite(eventColor));
+      let eventColor = hsva.toHEX();
+      let colorData = "#";
+      for (var i = 0; i < 3; i++) {
+        colorData += eventColor[i].toUpperCase()
+      }
+      $("#color").attr('value', colorData);
+      $("#text-color").attr('value', blackOrWhite(colorData));
     });
   });
 
