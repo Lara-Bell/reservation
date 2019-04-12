@@ -19,7 +19,7 @@ function blackOrWhite(hexcolor) {
 
 $(document).ready(function () {
 
-  $('#modalForm').on('click', 'update-btn', function() {
+  $('#modalForm').on('click', '#update-btn', function() {
     $('input[type="hidden"]' + 'input[name="_method"]').val("PUT");
   });
 

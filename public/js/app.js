@@ -69633,7 +69633,7 @@ function blackOrWhite(hexcolor) {
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
 
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#modalForm').on('click', 'update-btn', function () {
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#modalForm').on('click', '#update-btn', function () {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()('input[type="hidden"]' + 'input[name="_method"]').val("PUT");
   });
 
@@ -69682,9 +69682,13 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.pickr > button, .pcr-color-preview > button, .swatches > button').attr('type', 'button');
 
     pickr.on('save', function (hsva) {
-      var eventColor = hsva.toHEX().toString();
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#color").attr('value', eventColor);
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#text-color").attr('value', blackOrWhite(eventColor));
+      var eventColor = hsva.toHEX();
+      var colorData = "#";
+      for (var i = 0; i < 3; i++) {
+        colorData += eventColor[i].toUpperCase();
+      }
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#color").attr('value', colorData);
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#text-color").attr('value', blackOrWhite(colorData));
     });
   });
 
